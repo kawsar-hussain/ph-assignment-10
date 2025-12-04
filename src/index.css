@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.stylish-text {
+  font-family: "Permanent Marker", cursive;
+  color: #df8600;
+}
+
+nav .active {
+  text-decoration: underline;
+  color: #df8600;
+}
