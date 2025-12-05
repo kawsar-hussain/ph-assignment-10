@@ -1,10 +1,14 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import { Link } from "react-router";
+import { toast } from "react-toastify";
 
 const MyProducts = () => {
   const [myProducts, setMyProducts] = useState([]);
   const { user } = useContext(AuthContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalCallback, setModalCallback] = useState(null);
 
   useEffect(() => {
     axios
@@ -17,7 +21,20 @@ const MyProducts = () => {
       });
   }, [user?.email]);
 
-  console.log(myProducts);
+  const handleDelete = (id) => {
+    axios
+      .delete(`http://localhost:3000/delete/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        const filterData = myProducts.filter((product) => product._id !== id);
+        setMyProducts(filterData);
+        toast.success("Item deleted successfully!");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <div className="px-20 py-15 bg-base-200 lg:min-h-[500px] min-h-auto">
       <h2 className="text-4xl font-bold primary-text mb-10 text-center">My Product Lists</h2>
@@ -31,13 +48,13 @@ const MyProducts = () => {
               <th>Location</th>
               <th>Price</th>
               <th>Date</th>
-              <th></th>
+              <th>Action</th>
             </tr>
           </thead>
 
           <tbody>
             {myProducts.map((myProduct, index) => (
-              <tr key={index} className="even:bg-[#ffeacb] odd:bg-white hover:bg-gray-300">
+              <tr key={index} className="even:bg-[#ffefd7] odd:bg-white hover:bg-gray-200">
                 {/* Avatar + Name + Location */}
                 <td>
                   <div className="flex items-center gap-3">
@@ -69,9 +86,46 @@ const MyProducts = () => {
 
                 {/* Details button */}
 
-                <td className="flex gap-1">
-                  <button className="btn primary-bg text-white shadow-none btn-sm">Update</button>
-                  <button className="btn bg-[#ff5126] text-white shadow-none btn-sm">Delete</button>
+                <td>
+                  <div className="flex gap-1 items-center">
+                    <button
+                      className="btn bg-[#ff3700] text-white shadow-none btn-sm"
+                      onClick={() => {
+                        setModalCallback(() => () => handleDelete(myProduct._id)); // store callback
+                        setIsModalOpen(true); // open modal
+                      }}
+                    >
+                      Delete
+                    </button>
+
+                    {/* modal */}
+                    {isModalOpen && (
+                      <div className="modal modal-open ">
+                        <div className="modal-box bg-linear-to-tr from-[#ff6a00] to-[#ffb03a]">
+                          <h3 className="font-bold text-lg text-base-200">Confirm Delete</h3>
+                          <p className="py-4 text-base-200">Are you sure you want to delete this item?</p>
+                          <div className="modal-action">
+                            <button className="btn bg-base-300" onClick={() => setIsModalOpen(false)}>
+                              Cancel
+                            </button>
+                            <button
+                              className="btn bg-[#ff3700] shadow-none border-none text-white"
+                              onClick={() => {
+                                modalCallback?.(); // run stored callback
+                                setIsModalOpen(false); // close modal
+                              }}
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    <Link to={`/update-product/${myProduct._id}`} className="btn primary-bg text-white shadow-none btn-sm">
+                      Edit
+                    </Link>
+                  </div>
                 </td>
               </tr>
             ))}

@@ -90,7 +90,7 @@ const Register = () => {
             </div>
             <p className="text-red-500 text-xs md:text-sm">{error}</p>
 
-            <button type="submit" className="btn btn-neutral mt-4 primary-bg text-white border-none shadow-none btn-sm md:btn-md">
+            <button type="submit" className="btn mt-4 bg-linear-to-tr from-[#ff6a00] to-[#ffb03a] text-white border-none shadow-none btn-sm md:btn-md">
               Register
             </button>
           </fieldset>

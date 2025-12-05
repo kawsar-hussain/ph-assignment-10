@@ -86,13 +86,13 @@ const Header = () => {
               <img src={`${user.photoURL}`} alt="user photo" className="w-10 h-10 object-cover rounded-full"></img>
             </div>
 
-            <button onClick={handleLogOut} className="bg-base-100 z-1 p-3 h-8 btn rounded-sm primary-bg text-white hover:shadow-none">
+            <button onClick={handleLogOut} className=" z-1 p-3 h-8 btn rounded-sm bg-linear-to-tr from-[#ff6f00] to-[#ffb03a] text-white hover:shadow-none">
               Logout
             </button>
           </div>
         ) : (
           <div className="flex gap-2">
-            <Link to="/auth/login" className="h-8 btn primary-bg  text-white border-none hover:shadow-none">
+            <Link to="/auth/login" className="h-8 btn bg-linear-to-tr from-[#ff6a00] to-[#ffb03a] text-white border-none hover:shadow-none">
               Login
             </Link>
             <Link to="/auth/register" className="h-8 btn bg-transparent primary-text border-[#ff9900] hover:shadow-none">

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { toast } from "react-toastify";
-import AuthProvider, { AuthContext } from "../../Provider/AuthProvider";
+import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 
 const AddProductForm = () => {
@@ -32,7 +32,7 @@ const AddProductForm = () => {
 
   return (
     <div className="py-8 bg-base-200">
-      <title>PawMar - Add Product</title>
+      <title>PawMart - Add Product</title>
       <div className="max-w-xl mx-auto p-6 bg-white rounded-md">
         <h2 className="text-2xl font-bold text-center mb-6 primary-text">Add New Product / Pet</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -108,7 +108,7 @@ const AddProductForm = () => {
           </div>
 
           {/* Submit Button */}
-          <button className="btn primary-bg text-white w-full mt-4">Add Product</button>
+          <button className="btn bg-linear-to-tr from-[#ff6f00] to-[#ffb03a] text-white w-full mt-4">Add Product</button>
         </form>
       </div>
     </div>

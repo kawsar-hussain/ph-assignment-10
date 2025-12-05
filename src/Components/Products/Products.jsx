@@ -19,7 +19,7 @@ const Products = () => {
   }, []);
 
   const filteredProducts = selectedCategory === "All" ? products : products.filter((product) => product.category === selectedCategory);
-  console.log(filteredProducts);
+
   return (
     <div className="px-20 py-10">
       <title>PawMart - Pet & Supplies</title>
@@ -53,7 +53,7 @@ const Products = () => {
                 Location: <br /> {item.location}
               </p>
               {/* button */}
-              <Link to={`/product-details/${item?._id}`} className="primary-bg btn w-full text-white py-1.5 font-bold text-md text-center mt-4">
+              <Link to={`/product-details/${item?._id}`} className="bg-linear-to-tr from-[#ff6f00] to-[#ffb03a] btn w-full text-white py-1.5 font-bold text-md text-center mt-4">
                 See Details
               </Link>
             </div>

@@ -78,7 +78,7 @@ const Login = () => {
               </button>
             </div>
             {error && <p className="text-red-500 text-xs md:text-sm">{error}</p>}
-            <button type="submit" className="btn btn-neutral mt-4 primary-bg text-white border-none shadow-none btn-sm md:btn-md">
+            <button type="submit" className="btn bg-linear-to-tr from-[#ff6f00] to-[#ffb03a] mt-4 text-white border-none shadow-none btn-sm md:btn-md">
               Login
             </button>
           </fieldset>
