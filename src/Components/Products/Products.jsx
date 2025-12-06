@@ -6,10 +6,11 @@ import { FaFilter } from "react-icons/fa";
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/add-product-form")
+      .get("https://server-a10-six.vercel.app/add-product-form")
       .then((res) => {
         setProducts(res.data);
       })
@@ -18,7 +19,11 @@ const Products = () => {
       });
   }, []);
 
-  const filteredProducts = selectedCategory === "All" ? products : products.filter((product) => product.category === selectedCategory);
+  const filteredProducts = products.filter((product) => {
+    const matchesCategory = selectedCategory === "All" || product.category === selectedCategory;
+    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <div className=" lg:px-20 lg:py-10 p-3 pt-5 pb-10">
@@ -26,17 +31,29 @@ const Products = () => {
       <h2 className="lg:text-4xl text-3xl font-bold primary-text mb-10 text-center">
         Pets <span className="secondary-text">& Products</span>
       </h2>
-      <div className="flex gap-2 text-gray-700 mb-7 justify-end">
-        <p className="flex items-center gap-1">
-          <FaFilter /> Filter{" "}
-        </p>
-        <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} className="select w-[180px]">
-          <option>All</option>
-          <option>Pet</option>
-          <option>Food</option>
-          <option>Accessories</option>
-          <option>Care Product</option>
-        </select>
+      <div className="flex lg:flex-row flex-col gap-3 justify-between">
+        <label className="input h-8 rounded-full w-full lg:w-[300px]">
+          <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </g>
+          </svg>
+          <input type="search" placeholder="Search Product" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="placeholder-gray-500" />
+        </label>
+
+        <div className="flex gap-2 text-gray-700 mb-7">
+          <p className="flex items-center gap-1">
+            <FaFilter /> Filter{" "}
+          </p>
+          <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} className="h-8 select w-[180px]">
+            <option>All</option>
+            <option>Pet</option>
+            <option>Food</option>
+            <option>Accessories</option>
+            <option>Care Product</option>
+          </select>
+        </div>
       </div>
       {filteredProducts.length === 0 ? (
         <p className="mt-10 text-gray-600 text-center">No Product Founded</p>

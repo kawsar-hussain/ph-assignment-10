@@ -25,7 +25,7 @@ const AddProductForm = () => {
 
     // form.reset();
     console.log(productData);
-    axios.post("http://localhost:3000/add-product-form", productData).then((res) => {
+    axios.post("https://server-a10-six.vercel.app/add-product-form", productData).then((res) => {
       console.log(res);
     });
   };

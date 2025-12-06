@@ -8,7 +8,7 @@ const Orders = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/orders")
+      .get("https://server-a10-six.vercel.app/orders")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error fetching orders:", err));
   }, []);

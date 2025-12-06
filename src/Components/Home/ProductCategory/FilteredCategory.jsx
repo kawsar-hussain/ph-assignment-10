@@ -8,7 +8,7 @@ const FilteredCategory = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/filtered-category/${category}`)
+      .get(`https://server-a10-six.vercel.app/filtered-category/${category}`)
       .then((res) => {
         setProducts(res.data);
       })

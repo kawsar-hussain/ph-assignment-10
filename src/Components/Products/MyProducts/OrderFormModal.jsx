@@ -28,7 +28,7 @@ const OrderFormModal = ({ product }) => {
     };
 
     axios
-      .post("http://localhost:3000/orders", orderData)
+      .post("https://server-a10-six.vercel.app/orders", orderData)
       .then((res) => {
         console.log(res);
       })

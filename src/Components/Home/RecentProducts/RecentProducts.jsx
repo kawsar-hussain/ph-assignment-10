@@ -7,7 +7,7 @@ const RecentProducts = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/add-product-form")
+      .get("https://server-a10-six.vercel.app/add-product-form")
       .then((res) => {
         setProducts(res.data);
       })

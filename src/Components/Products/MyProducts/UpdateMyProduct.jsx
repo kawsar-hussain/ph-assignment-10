@@ -19,7 +19,7 @@ const UpdateMyProduct = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/product-details/${id}`)
+      .get(`https://server-a10-six.vercel.app/product-details/${id}`)
       .then((res) => {
         setData(res.data);
         setCategory(res.data.category);
@@ -47,7 +47,7 @@ const UpdateMyProduct = () => {
     console.log(formData);
 
     axios
-      .put(`http://localhost:3000/update/${id}`, formData)
+      .put(`https://server-a10-six.vercel.app/update/${id}`, formData)
       .then((res) => {
         console.log(res.data);
         toast.success("Data updated successfully.");

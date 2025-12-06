@@ -12,7 +12,7 @@ const MyProducts = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/my-products?email=${user?.email}`)
+      .get(`https://server-a10-six.vercel.app/my-products?email=${user?.email}`)
       .then((res) => {
         setMyProducts(res.data);
       })
@@ -23,7 +23,7 @@ const MyProducts = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:3000/delete/${id}`)
+      .delete(`https://server-a10-six.vercel.app/delete/${id}`)
       .then((res) => {
         console.log(res.data);
         const filterData = myProducts.filter((product) => product._id !== id);
