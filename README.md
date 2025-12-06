@@ -1,16 +1,35 @@
-# React + Vite
+# Welcome to 🐾 PetPaw
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![PetPaw Screenshot](public/pet.jpg)
 
-Currently, two official plugins are available:
+PetPaw is a modern and user friendly web application designed for buying, selling, and adopting pets, as well as purchasing pet related products. Users can browse categories, view detailed product pages, and place orders easily with a clean and responsive UI.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+- 🐶 Pet adoption system
+- 🛒 Buy & sell pet products
+- 📄 PDF download for order history
+- 🔍 Category-based filtering
+- 🔐 User authentication
+- ⚡ Fast backend API
+- 📱 Fully responsive UI
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Technologies Used
 
-## Expanding the ESLint configuration
+### Frontend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React.js
+- Tailwind CSS & Daisy UI
+- React Router
+- Axios
+- jsPDF & AutoTable
+
+### Backend
+
+- Node.js
+- Express.js
+- MongoDB
+
+---
+
+### [🚀 Click here to visit the website.](https://kawsar-hussain-ph-assignment-10.netlify.app/)
