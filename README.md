@@ -1,8 +1,8 @@
-# Welcome to 🐾 PetPaw
+# Welcome to 🐾 PawMart
 
-![PetPaw Screenshot](public/pet.jpg)
+![PawMart Screenshot](public/pet.jpg)
 
-PetPaw is a modern and user friendly web application designed for buying, selling, and adopting pets, as well as purchasing pet related products. Users can browse categories, view detailed product pages, and place orders easily with a clean and responsive UI.
+PawMart is a modern and user friendly web application designed for buying, selling, and adopting pets, as well as purchasing pet related products. Users can browse categories, view detailed product pages, and place orders easily with a clean and responsive UI.
 
 ## ✨ Features
 
