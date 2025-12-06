@@ -3,7 +3,7 @@ import React from "react";
 const ExtraSections = () => {
   return (
     <div className="mb-20">
-      <div className="px-20 mt-10 flex lg:flex-row flex-col gap-4">
+      <div className="lg:p-20 lg:pb-10 p-3 pt-5 flex lg:flex-row flex-col gap-4">
         <div className="flex-[0.4] border border-[#ffb74b] rounded-md p-8">
           <h3 className="primary-text font-bold text-3xl mb-6">Why Adopt from PawMart?</h3>
           <p className="text-gray-600">

@@ -17,7 +17,7 @@ const Root = () => {
         <AddProductForm></AddProductForm>
         <Products></Products>
       </Outlet>
-      {/* <Footer></Footer> */}
+      <Footer></Footer>
       <ToastContainer position="top-center" autoClose={2000}></ToastContainer>
     </div>
   );

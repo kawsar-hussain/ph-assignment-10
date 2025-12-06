@@ -66,6 +66,11 @@ const Header = () => {
           </div>
           <ul tabIndex="-1" className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
             {li}
+            <li>
+              <div className="block mt-3">
+                <ThemController></ThemController>
+              </div>
+            </li>
           </ul>
         </div>
         <Link to="/" className="lg:text-2xl text-xl font-bold flex items-center gap-1">
@@ -81,7 +86,9 @@ const Header = () => {
       </div>
 
       <div className="navbar-end flex gap-1.5">
-        <ThemController></ThemController>
+        <div className="hidden lg:block">
+          <ThemController></ThemController>
+        </div>
         {user ? (
           <div className="flex items-center gap-2">
             <div tabIndex={0} role="button" className="">

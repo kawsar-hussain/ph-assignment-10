@@ -16,8 +16,8 @@ const Orders = () => {
   }, []);
 
   return (
-    <div className="px-20 py-15 bg-base-200 lg:min-h-[500px] min-h-auto">
-      <h2 className="text-4xl font-bold primary-text mb-10 text-center">My Order Lists</h2>
+    <div className="px-3 lg:px-20 py-5 pb-10 lg:py-15 bg-base-200 lg:min-h-[500px] min-h-auto">
+      <h2 className="text-2xl lg:text-4xl font-bold primary-text mb-5 lg:mb-10 text-center">My Order Lists</h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
           {/* head */}

@@ -17,9 +17,9 @@ const RecentProducts = () => {
   }, []);
 
   return (
-    <div className="px-20 pt-15 pb-10">
+    <div className="lg:p-20 lg:pb-10 p-3 pt-5">
       <div className="text-center">
-        <h2 className="text-4xl font-bold primary-text mb-12">
+        <h2 className="lg:text-4xl text-2xl font-bold primary-text mb-5 lg:mb-12">
           Recent <span className="secondary-text">Products</span>
         </h2>
       </div>

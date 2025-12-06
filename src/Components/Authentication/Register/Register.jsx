@@ -64,7 +64,7 @@ const Register = () => {
   return (
     <div className="lg:h-[92vh] h-auto bg-[#1c1003] flex items-center bg-cover bg-center px-4 md:px-0">
       <title>PawMart - Register</title>
-      <div className="w-full h-full overflow-hidden ">
+      <div className="w-full h-full overflow-hidden hidden lg:block">
         <img src="/cat-cover.jpg" alt="" className="w-full object-cover" />
       </div>
       <div className="card w-full max-w-sm shrink-0 bg-[#78dd7900] backdrop-blur-xl shadow md:max-w-md">

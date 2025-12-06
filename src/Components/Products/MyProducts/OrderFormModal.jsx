@@ -61,13 +61,13 @@ const OrderFormModal = ({ product }) => {
               <h2 className="text-2xl font-bold text-center mb-6 primary-text">Place Your Order</h2>
               <div className="w-full aspect-4/3 bg-base-200 rounded-md p-2 mb-5">
                 <img src={product.image} alt={product.name} className="w-full h-full rounded-md object-cover" />
-                <div className="flex py-4 justify-between">
+                <div className="flex lg:flex-row flex-col gap-2 py-4 justify-between">
                   <div>
                     <div className="font-bold"> {product?.name}</div>
                     <div className="text-sm opacity-50">{product?.category}</div>
                     <div className="text-xs opacity-50">{`ID: ${product?._id}`}</div>
                   </div>
-                  <p className="primary-text text-xl font-bold">{`Price: $${product.price}`}</p>
+                  <p className="primary-text text-md lg:text-xl font-bold">{`Price: $${product.price}`}</p>
                 </div>
               </div>
               <form onSubmit={handleOrder} className="space-y-4">

@@ -29,19 +29,19 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="px-[200px] py-10">
-      <div className="bg-base-200 p-4 flex gap-5 rounded-md overflow-hidden">
+    <div className="lg:px-[200px] px-3 py-10">
+      <div className="bg-base-200 p-4 flex lg:flex-row flex-col gap-5 rounded-md overflow-hidden">
         <div className="w-full flex-7 aspect-4/3">
           <img src={product.image} alt={product.name} className="w-full h-full rounded-md object-cover" />
         </div>
 
         <div className="flex-5 py-5">
-          <h2 className="text-4xl font-bold primary-text">{product.name}</h2>
+          <h2 className="text-2xl lg:text-4xl font-bold primary-text">{product.name}</h2>
           <p className="text-gray-600 text-sm "> {product.category}</p>
           <p className="text-gray-700 py-7 ">
             <span className="font-semibold">About {product.name}:</span> {product.description}
           </p>
-          <p className="primary-text text-2xl mb-4 font-semibold">Price: {product.price === 0 ? "Free for Adoption" : `${product.price}৳`}</p>
+          <p className="primary-text text-xl lg:text-2xl mb-4 font-semibold">Price: {product.price === 0 ? "Free for Adoption" : `${product.price}৳`}</p>
           <p className="text-gray-600 text-sm">
             Email:{" "}
             <Link to={`https://mail.google.com/mail/?view=cm&fs=1&to=${product.email}`} target="blank" className="hover:text-[#ff9900] underline hover:cursor-pointer">
