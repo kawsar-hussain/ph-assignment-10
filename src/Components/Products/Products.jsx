@@ -26,7 +26,7 @@ const Products = () => {
   });
 
   return (
-    <div className=" lg:px-20 lg:py-10 p-3 pt-5 pb-10">
+    <div className=" lg:px-20 lg:py-10 p-3 pt-5 pb-10 min-h-[500px]">
       <title>PawMart - Pet & Supplies</title>
       <h2 className="lg:text-4xl text-3xl font-bold primary-text mb-10 text-center">
         Pets <span className="secondary-text">& Products</span>
@@ -48,10 +48,10 @@ const Products = () => {
           </p>
           <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} className="h-8 select w-[180px]">
             <option>All</option>
-            <option>Pet</option>
+            <option>Pets</option>
             <option>Food</option>
             <option>Accessories</option>
-            <option>Care Product</option>
+            <option>Care-Products</option>
           </select>
         </div>
       </div>

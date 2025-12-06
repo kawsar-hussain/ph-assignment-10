@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Orders = () => {
   const [products, setProducts] = useState([]);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     axios
@@ -25,19 +27,12 @@ const Orders = () => {
     doc.text("My Order Lists", doc.internal.pageSize.getWidth() / 2, 15, { align: "center" }); // Centered
 
     // Table headers
-    const headers = [["SL No", "Product Name", "Buyer Name", "Quantity", "Price", "Address", "Phone", "Date"]];
+    const headers = [["SL No", "Product", "Buyer Name", "Quantity", "Price", "Address", "Phone", "Date"]];
 
     // Table rows
-    const rows = products.map((order, index) => [
-      index + 1,
-      order.productName,
-      order.buyerName,
-      order.quantity,
-      order.price === 0 ? "Free For Adoption" : order.price,
-      order.address,
-      order.phone,
-      order.date,
-    ]);
+    const rows = [...products]
+      .filter((product) => product.email === user.email)
+      .map((order, index) => [index + 1, order.productName, order.buyerName, order.quantity, order.price === 0 ? "Free For Adoption" : order.price, order.address, order.phone, order.date]);
 
     // Table
     autoTable(doc, {
@@ -62,8 +57,9 @@ const Orders = () => {
     const dateTimeString = `${day}-${month}-${year}, ${hours}:${minutes}:${seconds} ${ampm}`;
 
     doc.setFontSize(10);
-    doc.setTextColor(150);
+    doc.setTextColor(100);
     doc.text(`Downloaded at: ${dateTimeString}`, 14, pageHeight - 10);
+    doc.text(`Customer Name: ${user.displayName}`, 14, pageHeight - 16);
 
     doc.save("orders (PawMart).pdf");
   };
@@ -83,7 +79,7 @@ const Orders = () => {
           <thead className="bg-[#ff9900] text-white">
             <tr>
               <th>SL No</th>
-              <th>Product Name</th>
+              <th>Product</th>
               <th>Buyer Name</th>
               <th>Quantity</th>
               <th>Price</th>
@@ -93,18 +89,32 @@ const Orders = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map((order, index) => (
-              <tr key={index} className="even:bg-[#ffefd7] odd:bg-white hover:bg-gray-200">
-                <td>{index + 1}</td>
-                <td>{order.productName}</td>
-                <td>{order.buyerName}</td>
-                <td>{order.quantity}</td>
-                <td>{order.price === 0 ? "Free For Adoption" : order.price}</td>
-                <td>{order.address}</td>
-                <td>{order.phone}</td>
-                <td>{order.date}</td>
-              </tr>
-            ))}
+            {[...products]
+              .filter((product) => product.email === user.email)
+              .map((order, index) => (
+                <tr key={index} className="even:bg-[#ffefd7] odd:bg-white hover:bg-gray-200">
+                  <td>{index + 1}</td>
+                  <td>
+                    <div className="flex items-center gap-3">
+                      <div className="avatar">
+                        <div className="mask mask-squircle h-12 w-12">
+                          <img src={order?.image} alt={order?.productName} />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="font-bold">{order?.productName}</div>
+                        <div className="text-sm opacity-50">{order?.category}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>{order.buyerName}</td>
+                  <td>{order.quantity}</td>
+                  <td>{order.price === 0 ? "Free For Adoption" : order.price}</td>
+                  <td>{order.address}</td>
+                  <td>{order.phone}</td>
+                  <td>{order.date}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
