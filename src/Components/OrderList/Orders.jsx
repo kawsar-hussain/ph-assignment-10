@@ -23,6 +23,7 @@ const Orders = () => {
           {/* head */}
           <thead className="bg-[#ff9900] text-white">
             <tr>
+              <th>SL No</th>
               <th>Product Name</th>
               <th>Buyer Name</th>
               <th>Quantity</th>
@@ -36,10 +37,22 @@ const Orders = () => {
           <tbody>
             {products.map((order, index) => (
               <tr key={index} className="even:bg-[#ffefd7] odd:bg-white hover:bg-gray-200">
+                {/* serial no */}
+                <td>{index + 1}</td>
                 {/* Avatar + Name + Location */}
-                <td>{order.productName}</td>
-
-                {/* Category */}
+                <td>
+                  <div className="flex items-center gap-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle h-12 w-12">
+                        <img src={order?.image} alt={order?.name} />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="font-bold"> {order.productName}</div>
+                      <div className="text-sm opacity-50">{order?.category}</div>
+                    </div>
+                  </div>
+                </td>
 
                 {/* Description */}
                 <td className="max-w-[200px] truncate">{order?.buyerName}</td>

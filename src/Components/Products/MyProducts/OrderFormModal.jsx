@@ -23,6 +23,8 @@ const OrderFormModal = ({ product }) => {
       phone: form.phone.value,
       date: form.date.value,
       additionalNotes: form.additionalNotes.value,
+      image: product.image,
+      category: product.category,
     };
 
     axios
@@ -57,24 +59,28 @@ const OrderFormModal = ({ product }) => {
           <div className="">
             <div className="max-w-xl mx-auto p-6 bg-white rounded-md">
               <h2 className="text-2xl font-bold text-center mb-6 primary-text">Place Your Order</h2>
+              <div className="w-full aspect-4/3 bg-base-200 rounded-md p-2 mb-5">
+                <img src={product.image} alt={product.name} className="w-full h-full rounded-md object-cover" />
+                <div className="flex py-4 justify-between">
+                  <div>
+                    <div className="font-bold"> {product?.name}</div>
+                    <div className="text-sm opacity-50">{product?.category}</div>
+                    <div className="text-xs opacity-50">{`ID: ${product?._id}`}</div>
+                  </div>
+                  <p className="primary-text text-xl font-bold">{`Price: $${product.price}`}</p>
+                </div>
+              </div>
               <form onSubmit={handleOrder} className="space-y-4">
                 {/* Buyer Name */}
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">Buyer Name</span>
+                    <span className="label-text">Name</span>
                   </label>
-                  <input
-                    defaultValue={user.displayName}
-                    readOnly
-                    type="text"
-                    name="buyerName"
-                    placeholder="Enter Buyer Name"
-                    className="input input-bordered w-full placeholder:text-gray-500 bg-base-200"
-                  />
+                  <input defaultValue={user.displayName} readOnly type="text" name="buyerName" className="input input-bordered w-full placeholder:text-gray-500 bg-base-200" />
                 </div>
 
                 {/* Product Name */}
-                <div className="form-control">
+                <div className="form-control hidden">
                   <label className="label">
                     <span className="label-text">Product Name</span>
                   </label>
@@ -89,7 +95,7 @@ const OrderFormModal = ({ product }) => {
                 </div>
 
                 {/* Product ID */}
-                <div className="form-control">
+                <div className="form-control hidden">
                   <label className="label">
                     <span className="label-text">Product ID</span>
                   </label>
@@ -103,21 +109,19 @@ const OrderFormModal = ({ product }) => {
                   />
                 </div>
 
-                <div className="flex gap-2">
-                  {/* Price */}
-                  <div className="form-control flex-7">
-                    <label className="label">
-                      <span className="label-text">Price (USD)</span>
-                    </label>
-                    <input defaultValue={product.price} readOnly type="number" name="price" placeholder="Enter Price" className="input input-bordered w-full placeholder:text-gray-500 bg-base-200" />
-                  </div>
-                  {/* Quantity */}
-                  <div className="form-control flex-5">
-                    <label className="label">
-                      <span className="label-text">Quantity</span>
-                    </label>
-                    <input type="text" name="quantity" min="1" placeholder="Enter Quantity" className="input input-bordered w-full placeholder:text-gray-500" required />
-                  </div>
+                {/* Price */}
+                <div className="form-control hidden">
+                  <label className="label">
+                    <span className="label-text">Price (USD)</span>
+                  </label>
+                  <input defaultValue={product.price} readOnly type="number" name="price" placeholder="Enter Price" className="input input-bordered w-full placeholder:text-gray-500 bg-base-200" />
+                </div>
+                {/* Quantity */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Quantity</span>
+                  </label>
+                  <input type="text" name="quantity" min="1" placeholder="Enter Quantity" className="input input-bordered w-full placeholder:text-gray-500" required />
                 </div>
 
                 {/* Address */}
@@ -155,9 +159,9 @@ const OrderFormModal = ({ product }) => {
                 {/* Additional Notes */}
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">Additional Notes (Optional)</span>
+                    <span className="label-text">Notes (Optional)</span>
                   </label>
-                  <textarea name="additionalNotes" placeholder="Enter your message" className="textarea textarea-bordered w-full placeholder:text-gray-500 resize-none"></textarea>
+                  <textarea name="additionalNotes" placeholder="Write your message" className="textarea textarea-bordered w-full placeholder:text-gray-500 resize-none"></textarea>
                 </div>
 
                 {/* Submit Button */}

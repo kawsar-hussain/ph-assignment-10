@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { Link, Links, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import ThemController from "./ThemController";
 
 const Header = () => {
   const { user, logOut } = use(AuthContext);
@@ -80,6 +81,7 @@ const Header = () => {
       </div>
 
       <div className="navbar-end flex gap-1.5">
+        <ThemController></ThemController>
         {user ? (
           <div className="flex items-center gap-2">
             <div tabIndex={0} role="button" className="">

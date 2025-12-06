@@ -35,7 +35,7 @@ const ProductDetails = () => {
           <img src={product.image} alt={product.name} className="w-full h-full rounded-md object-cover" />
         </div>
 
-        <div className="flex-6 py-5">
+        <div className="flex-5 py-5">
           <h2 className="text-4xl font-bold primary-text">{product.name}</h2>
           <p className="text-gray-600 text-sm "> {product.category}</p>
           <p className="text-gray-700 py-7 ">
