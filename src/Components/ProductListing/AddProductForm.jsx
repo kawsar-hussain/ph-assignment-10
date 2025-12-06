@@ -80,7 +80,7 @@ const AddProductForm = () => {
             <label className="label">
               <span className="label-text">Description</span>
             </label>
-            <textarea name="description" className="textarea textarea-bordered w-full placeholder:text-gray-500 resize-none" placeholder="Write product or pet details..."></textarea>
+            <textarea name="description" className="textarea textarea-bordered w-full placeholder:text-gray-500 resize-none" placeholder="Write product or pet details..." required></textarea>
           </div>
 
           {/* Image URL */}

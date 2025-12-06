@@ -16,14 +16,14 @@ const Header = () => {
       </li>
       <li>
         <NavLink to="/products" className="rounded-none">
-          Pets & Supplies
+          Pets & Products
         </NavLink>
       </li>
       {user && (
         <>
           <li>
             <NavLink to="/add-product-form" className="rounded-none">
-              Add Listing
+              Add Products
             </NavLink>
           </li>
           <li>

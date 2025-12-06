@@ -42,14 +42,14 @@ const OrderFormModal = ({ product }) => {
   // date
   const today = new Date();
   const yyyy = today.getFullYear();
-  const mm = String(today.getMonth() + 1).padStart(2, "0"); // months start from 0
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
   const dd = String(today.getDate()).padStart(2, "0");
   const formattedDate = `${yyyy}-${mm}-${dd}`;
 
   return (
     <div>
       <button className="btn bg-linear-to-tr from-[#ff6f00] to-[#ffb03a] text-white mt-5" onClick={() => document.getElementById("my_modal_3").showModal()}>
-        {product.category === "Pet" ? "Adopt Now" : "Order Now"}
+        {product.price === 0 ? "Adopt Now" : "Order Now"}
       </button>
       <dialog id="my_modal_3" className="modal ">
         <div className="modal-box p-0">
@@ -114,15 +114,24 @@ const OrderFormModal = ({ product }) => {
                   <label className="label">
                     <span className="label-text">Price (USD)</span>
                   </label>
-                  <input defaultValue={product.price} readOnly type="number" name="price" placeholder="Enter Price" className="input input-bordered w-full placeholder:text-gray-500 bg-base-200" />
+                  <input defaultValue={product.price} readOnly type="number" name="price" placeholder="Enter Price" className="input input-bordered w-full placeholder:text-gray-500 " />
                 </div>
                 {/* Quantity */}
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Quantity</span>
-                  </label>
-                  <input type="text" name="quantity" min="1" placeholder="Enter Quantity" className="input input-bordered w-full placeholder:text-gray-500" required />
-                </div>
+                {product.category === "Pets" ? (
+                  <div className="form-control hidden">
+                    <label className="label">
+                      <span className="label-text">Quantity</span>
+                    </label>
+                    <input type="text" defaultValue={1} readOnly name="quantity" min="1" placeholder="Enter Quantity" className="input input-bordered w-full placeholder:text-gray-500 " required />
+                  </div>
+                ) : (
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Quantity</span>
+                    </label>
+                    <input type="text" name="quantity" min="1" placeholder="Enter Quantity" className="input input-bordered w-full placeholder:text-gray-500" required />
+                  </div>
+                )}
 
                 {/* Address */}
                 <div className="form-control">
