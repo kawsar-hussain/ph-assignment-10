@@ -4,6 +4,8 @@
 
 PawMart is a modern and user friendly web application designed for buying, selling, and adopting pets, as well as purchasing pet related products. Users can browse categories, view detailed product pages, and place orders easily with a clean and responsive UI.
 
+### [🚀 Click Here to Visit Live.](https://kawsar-hussain-ph-assignment-10.netlify.app/)
+
 ## ✨ Features
 
 - 🐶 Pet adoption system
@@ -32,4 +34,3 @@ PawMart is a modern and user friendly web application designed for buying, selli
 
 ---
 
-### [🚀 Click here to visit the website.](https://kawsar-hussain-ph-assignment-10.netlify.app/)
