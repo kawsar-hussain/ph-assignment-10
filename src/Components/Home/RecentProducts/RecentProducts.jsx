@@ -28,10 +28,10 @@ const RecentProducts = () => {
           .filter((item) => item.category != "Pets")
           .reverse()
           .map((item) => (
-            <div key={item._id} className="bg-white rounded-md overflow-hidden hover:scale-[1.01] duration-75 shadow-md">
+            <div key={item._id} className="bg-white rounded-md overflow-hidden">
               <Link to={`/product-details/${item?._id}`}>
                 <div className="w-full aspect-4/3 border-b-2 border-gray-100">
-                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                  <img src={item.image} alt={item.name} className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105" />
                 </div>
               </Link>
 

@@ -4,9 +4,11 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import ThemController from "./ThemController";
 import { FiLogOut, FiUserCheck } from "react-icons/fi";
-import { IoIosAddCircleOutline, IoIosGitPullRequest } from "react-icons/io";
+import { IoIosGitPullRequest } from "react-icons/io";
 import { MdAddChart } from "react-icons/md";
 import { IoBrushOutline } from "react-icons/io5";
+import { TbBuildingWarehouse } from "react-icons/tb";
+import { RiHome4Line } from "react-icons/ri";
 
 const Header = () => {
   const { user, logOut } = use(AuthContext);
@@ -89,7 +91,12 @@ const Header = () => {
                 <ul className="py-1">
                   <li>
                     <Link to="/add-product-form" className="text-xs py-1.5 flex gap-2">
-                      <MdAddChart className="text-base" /> Add Items
+                      <MdAddChart className="text-base" /> Add Item
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/add-product-form" className="text-xs py-1.5 flex gap-2">
+                      <RiHome4Line className="text-base" /> Rehome a Pet
                     </Link>
                   </li>
                   <li>

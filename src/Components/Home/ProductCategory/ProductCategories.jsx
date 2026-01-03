@@ -36,13 +36,13 @@ const ProductCategories = () => {
 
       <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4">
         {category.map((item, index) => (
-          <Link to={`filtered-category/${item.categoryRoute}`} key={index} className="bg-base-200 rounded-md overflow-hidden border-2 border-[#ff9900] hover:scale-[1.01] duration-75">
-            <div className="w-full aspect-4/3">
-              <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+          <Link to={`filtered-category/${item.categoryRoute}`} key={index} className="bg-base-200 rounded-md overflow-hidden border-2 border-[#ff9900] group">
+            <div className="w-full aspect-4/3 overflow-hidden">
+              <img src={item.image} alt={item.name} className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
             </div>
             <div className="primary-bg text-white py-1.5 font-bold text-md flex items-center justify-center gap-1">
               <h2>{item.category}</h2>
-              <FaArrowRight />
+              <FaArrowRight className="" />
             </div>
           </Link>
         ))}
