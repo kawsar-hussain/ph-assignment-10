@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./Components/Header/Header";
+import Navbar from "./Components/Header/Navbar";
 import { Outlet } from "react-router";
 import Footer from "./Components/Footer/Footer";
 import Home from "./Components/Home/Home";
@@ -11,7 +11,7 @@ import Products from "./Components/Products/Products";
 const Root = () => {
   return (
     <div>
-      <Header></Header>
+      <Navbar></Navbar>
       <Outlet>
         <Home></Home>
         <AddProductForm></AddProductForm>

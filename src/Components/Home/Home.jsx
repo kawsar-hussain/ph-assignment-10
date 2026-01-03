@@ -10,9 +10,7 @@ const Home = () => {
       <title>PawMart - Home</title>
       <Hero></Hero>
       <ProductCategories></ProductCategories>
-      <hr className="mx-20 text-gray-300" />
       <RecentProducts></RecentProducts>
-      <hr className="mx-20 text-gray-300" />
       <ExtraSections></ExtraSections>
     </div>
   );

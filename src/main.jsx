@@ -20,6 +20,8 @@ import MyProducts from "./Components/Products/MyProducts/MyProducts";
 import UpdateMyProduct from "./Components/Products/MyProducts/UpdateMyProduct";
 import Orders from "./Components/OrderList/Orders";
 import Pets from "./Components/Pets/Pets";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import AddPet from "./Components/Pets/AddPet";
 
 // promise for plants section
 
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddProductForm></AddProductForm>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "create-adopt-post",
+        element: (
+          <PrivateRoute>
+            <AddPet></AddPet>
           </PrivateRoute>
         ),
       },
@@ -112,6 +122,14 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <Error404></Error404>,
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
   },
 ]);
 

@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import app from "../Firebase/firebase.config";
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import axios from "axios";
 
 export const AuthContext = createContext();
 
@@ -9,8 +10,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  // console.log(user);
+  const [dbUser, setDbuser] = useState("");
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -40,8 +40,17 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!user) return;
+    axios.get(`http://localhost:3000/users/${user.email}`).then((res) => {
+      // console.log(res.data.role);
+      setDbuser(res.data);
+    });
+  }, [user]);
+
   const authData = {
     user,
+    dbUser,
     createUser,
     logOut,
     logIn,

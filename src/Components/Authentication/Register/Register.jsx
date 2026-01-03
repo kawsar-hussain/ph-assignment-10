@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import app from "../../../Firebase/firebase.config";
+import axios from "axios";
 
 const Register = () => {
   const { createUser, updateUser, setUser } = useContext(AuthContext);
@@ -26,11 +27,27 @@ const Register = () => {
       return;
     }
 
+    const formData = {
+      name,
+      email,
+      role: "user",
+      photoURL,
+      status: "active",
+    };
+
     createUser(email, password)
       .then((result) => {
         updateUser({ displayName: name, photoURL: photoURL })
           .then(() => {
             setUser(result.user);
+            axios
+              .post("http://localhost:3000/users", formData)
+              .then((res) => {
+                console.log(res.data);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
             e.target.reset();
             toast.success("Registration successful!");
             navigate(`${location.state ? location.state : "/"}`);

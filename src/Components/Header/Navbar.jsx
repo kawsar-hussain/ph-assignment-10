@@ -10,7 +10,7 @@ import { IoBrushOutline } from "react-icons/io5";
 import { TbBuildingWarehouse } from "react-icons/tb";
 import { RiHome4Line } from "react-icons/ri";
 
-const Header = () => {
+const Navbar = () => {
   const { user, logOut } = use(AuthContext);
 
   const li = (
@@ -95,8 +95,8 @@ const Header = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/add-product-form" className="text-xs py-1.5 flex gap-2">
-                      <RiHome4Line className="text-base" /> Rehome a Pet
+                    <Link to="/create-adopt-post" className="text-xs py-1.5 flex gap-2">
+                      <RiHome4Line className="text-base" /> Adopt Your Pet
                     </Link>
                   </li>
                   <li>
@@ -146,4 +146,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;

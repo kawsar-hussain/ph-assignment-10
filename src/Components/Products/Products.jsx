@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router";
 import { FaFilter } from "react-icons/fa";
 import Loader from "../../Loader";
 import { GrLocation } from "react-icons/gr";
 import Aside from "./Aside";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(false);
+  const { dbUser } = useContext(AuthContext);
+
+  console.log(dbUser);
 
   useEffect(() => {
     setLoading(true);
@@ -50,24 +54,21 @@ const Products = () => {
         </div>
         <div className="flex-10">
           <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-3">
-            {[...filteredProducts]
-              .filter((item) => item.category != "Pets")
-              .reverse()
-              .map((item) => (
-                <div key={item._id} className="bg-white rounded-md overflow-hidden shadow-sm">
-                  <Link to={`/product-details/${item?._id}`}>
-                    <div className="w-full overflow-hidden aspect-4/3 border-b-2 border-gray-100">
-                      <img src={item.image} alt={item.name} className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105" />
-                    </div>
-                  </Link>
-
-                  <div className="p-3">
-                    <h3 className="text-lg font-semibold">{item.name}</h3>
-                    <p className="text-gray-600 text-xs">{item.category}</p>
-                    <p className="text-lg font-semibold py-2 primary-text">{item.price === 0 ? "Free for Adoption" : `$${item.price}`}</p>
+            {[...filteredProducts].reverse().map((item) => (
+              <div key={item._id} className="bg-white rounded-md overflow-hidden shadow-sm hover:shadow-md">
+                <Link to={`/product-details/${item?._id}`}>
+                  <div className="w-full overflow-hidden aspect-4/3 border-b-2 border-gray-100">
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105" />
                   </div>
+                </Link>
+
+                <div className="p-3">
+                  <h3 className="text-lg font-semibold">{item.name}</h3>
+                  <p className="text-gray-600 text-xs">{item.category}</p>
+                  <p className="text-lg font-semibold py-2 primary-text">{item.price === 0 ? "Free for Adoption" : `$${item.price}`}</p>
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
           {filteredProducts.length === 0 && (
             <div className="flex flex-col items-center justify-center py-16 px-4 text-center">
