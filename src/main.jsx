@@ -24,6 +24,7 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import AddPet from "./Components/Pets/AddPet";
 import PetDetails from "./Components/Pets/PetDetails";
 import ContactUs from "./Components/ContactUs/ContactUs";
+import AboutUs from "./Components/AboutUs/AboutUs";
 
 // promise for plants section
 
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: "contact-us",
         element: <ContactUs></ContactUs>,
+      },
+      {
+        path: "about-us",
+        element: <AboutUs></AboutUs>,
       },
       {
         path: "my-products",

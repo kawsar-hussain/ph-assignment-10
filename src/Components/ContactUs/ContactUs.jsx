@@ -3,11 +3,13 @@ import React from "react";
 const ContactUs = () => {
   return (
     <div>
-      <section className="py-16 bg-gray-50 px-3">
+      <section className="py-10 bg-gray-50 px-3">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800">Get In Touch</h2>
+            <h2 className="lg:text-4xl text-3xl text-center font-bold primary-text">
+              Get In <span className="secondary-text">Touch</span>
+            </h2>
             <p className="text-gray-500 mt-3 max-w-lg mx-auto">Have questions about adoption or want to help our furry friends? Reach out to us, and we'll respond as soon as possible.</p>
           </div>
 
